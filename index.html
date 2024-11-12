@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <title>DealScraper</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to DealScraper</h1>
+    </header>
+    <div>
+      <fieldset>
+        <form>
+          <div>
+            <label>Page to Scrape</label>
+            <input
+              type="url"
+              id="website"
+              name="website"
+              placeholder="Enter URL for page you want to scrape"
+              pattern="https?://.+"
+              required
+            />
+            <label>Search Scrape by Keywords</label>
+            <input
+              type="text"
+              id="keywords"
+              name="keywords"
+              placeholder="Enter words or phrases, separated by commas"
+              pattern="^([a-zA-Z0-9\s]+)(,\s*[a-zA-Z0-9\s]+)*$"
+              required
+            />
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter phone number to receive text alerts"
+              pattern="^\+?(\d{1,3})?[-. \(]*\d{3}[-. \)]*\d{3}[-. ]*\d{4}$"
+              required
+            />
+          </div>
+          <div>
+            <button type="submit" class="center-button">Submit</button>
+          </div>
+        </form>
+      </fieldset>
+      <div id="success-message" class="success-message">Form submitted!</div>
+    </div>
+
+    <!-- Include the Cleave.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/cleave.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cleave.js/1.6.0/addons/cleave-phone.us.js"></script>
+
+    <!-- Initialize Cleave on the phone input field -->
+    <script>
+      new Cleave("#phone", {
+        phone: true,
+        phoneRegionCode: "US",
+      });
+      // Custom validation messages
+      document
+        .getElementById("website")
+        .addEventListener("invalid", function (e) {
+          e.target.setCustomValidity("Please enter valid URL");
+        });
+
+      document
+        .getElementById("website")
+        .addEventListener("input", function (e) {
+          e.target.setCustomValidity(""); // Clear custom message on input
+        });
+
+      document
+        .getElementById("keywords")
+        .addEventListener("invalid", function (e) {
+          e.target.setCustomValidity(
+            "Please enter words or phrases separated by commas"
+          );
+        });
+
+      document
+        .getElementById("keywords")
+        .addEventListener("input", function (e) {
+          e.target.setCustomValidity(""); // Clear custom message on input
+        });
+
+      document
+        .getElementById("phone")
+        .addEventListener("invalid", function (e) {
+          e.target.setCustomValidity("Please enter a valid phone number");
+        });
+
+      document.getElementById("phone").addEventListener("input", function (e) {
+        e.target.setCustomValidity(""); // Clear custom message on input
+      });
+
+      // Send form data
+      document
+        .querySelector("form")
+        .addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const url = document.getElementById("website").value;
+          const phone = document.getElementById("phone").value;
+          const keywords = document
+            .getElementById("keywords")
+            .value.split(",")
+            .map((keyword) => keyword.trim());
+
+          const formData = { url, keywords, phone };
+          try {
+            // Send data to the backend
+            const response = await fetch(
+              "http://localhost:3000/api/form-data",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+              }
+            );
+
+            if (response.ok) {
+              document.getElementById("success-message").style.display =
+                "block"; // Show success message
+            } else {
+              console.error("Failed to submit form");
+            }
+          } catch (error) {
+            console.error("Error sending form data:", error);
+          }
+        });
+    </script>
+  </body>
+</html>

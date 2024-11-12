@@ -1,0 +1,95 @@
+/* Body styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 1rem;
+  padding: 1rem;
+  color: #333333;
+  background-color: #f9f9f9;
+}
+
+/* Header styles */
+h1 {
+  color: rgb(104, 1, 104);
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin: 20px 0;
+  line-height: 1.2;
+}
+
+/* Regular text styles */
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 10px 0;
+  color: #555; /* Medium gray text */
+}
+
+/* Text input styles */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  font-size: 16px;
+  padding: 8px;
+  margin: 5px 0 15px 0;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3498db; /* Light blue on focus */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3); /* Light blue shadow */
+}
+
+/* Button styles */
+button {
+  font-size: 16px;
+  color: #fff;
+  background-color: #3498db; /* Light blue */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Border styles for containers or sections */
+.border-box {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 6px;
+  margin: 20px 0;
+}
+.center-button {
+  display: block;
+  margin: 0 auto;
+}
+/* Success message styles */
+.success-message {
+  display: none;
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-size: 1em;
+  text-align: center;
+}

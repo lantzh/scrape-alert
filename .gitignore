@@ -1,0 +1,28 @@
+# Environment variables
+.env
+
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Optional npm cache directory
+.npm
+
+# OS-specific files
+.DS_Store
+
+# Optional VSC settings
+.vscode/
+
+# Coverage directory used by testing frameworks
+coverage/
+
+# Serverless framework files 
+.serverless/
+
+# AWS Lambda build artifacts 
+dist/
