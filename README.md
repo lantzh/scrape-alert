@@ -1,6 +1,6 @@
-# AlertScrape
+# ScrapeAlert
 
-**AlertScrape** is a web scraping tool designed to monitor specific web pages for keywords. When a keyword match is detected on a page, the tool sends an SMS alert, keeping you informed about relevant updates instantly.
+**SrapeAlert** is a web scraping tool designed to monitor specific web pages for keywords. When a keyword match is detected on a page, the tool sends an SMS alert, keeping you informed about relevant updates instantly.
 
 ## Features
 
